@@ -20,6 +20,10 @@
       // this binds span to the value of the input
       document.addEventListener('DOMContentLoaded', function () {
         console.log(document.querySelector('#pizza-size'))
+        document.addEventListener('keyup', function() {
+          window.pizzaSize = document.querySelector('#pizza-size').value;
+          document.querySelector('#display-size').innerHTML = window.pizzaSize;
+        })
       })
 
     </script>
