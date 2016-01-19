@@ -19,6 +19,8 @@
           matches[j].addEventListener('keyup', function(){
             var key = matches[j].attributes['data-bind'].value;
               window[key] = matches[j].value; 
+              document.querySelector('span[data-bind=' + key + "]").innerHTML = matches[j].value;
+
           })
         }
       })

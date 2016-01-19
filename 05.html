@@ -8,6 +8,41 @@
       // start with the code from 04.html
       // using setInterval, make it so that if you change window.pizzaSize in Chrome dev tools
       // the pizzaSize inputs and labels will change with it
+     document.addEventListener('DOMContentLoaded', function () {
+      var matches = document.querySelectorAll('[data-bind]')
+        for (var i = 0; i < matches.length; i++) {
+          if (matches[i].tagName === 'INPUT'){  
+            addlistener(i);
+            }
+          //console.log(matches[i].attributes['data-bind'].value)
+          };
+        function addlistener(j){
+          matches[j].addEventListener('keyup', function(){
+            var key = matches[j].attributes['data-bind'].value;
+              window[key] = matches[j].value;                
+                for (var k =0; k < matches.length; k++){
+                  if (matches[k].attributes['data-bind'].value === key){
+                    if (matches[k].tagName === 'INPUT'){
+                      matches[k].value = matches[j].value;
+                      } else {
+                          matches[k].innerHTML = matches[j].value;
+                      }
+                  }
+                }
+          })
+        }
+      }) 
+     setInterval(function(){
+      var pizzaProp = document.querySelectorAll('[data-bind]')
+      for (var i = 0; i < pizzaProp.length; i++){
+        var key = pizzaProp[i].attributes['data-bind'].value;
+        if (pizzaProp[i].tagName === "SPAN") {
+          pizzaProp[i].innerHTML = window[key]    
+        } else {
+          pizzaProp[i].value = window[key];
+        }
+      }
+     }, 1000)
     </script>
   </head>
   <body>
